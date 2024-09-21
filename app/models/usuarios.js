@@ -1,38 +1,38 @@
 module.exports = (sequelize, Sequelize) => {
-	const libros = sequelize.define('libros', {
-	  id_libro: {
+	const usuarios = sequelize.define('usuarios', {
+	  id_usuario: {
 		type: Sequelize.INTEGER,
 		allowNull: false,
 	  },
-	  titulo: {
+	  nombre: {
 		type: Sequelize.STRING,
 		allowNull: false,
 	  },
-	  id_autor: {
+	  apellido: {
 		type: Sequelize.STRING,
 		allowNull: false,
 	  },
-	  isbn: {
+	  email: {
 		type: Sequelize.STRING,
 		allowNull: false,
 	  },
-	  editorial: {
+	  email: {
 		type: Sequelize.STRING,
 		allowNull: false,
 	  },
-	  anio_publicacion: {
-		type: Sequelize.INTEGER,
+	  telefono: {
+		type: Sequelize.STRING,
 		allowNull: false,
 	  },
-      categoria:{
+      direccion:{
       type: Sequelize.STRING,
       allowNull: false,
       }, 
-      cantidad_disponible:{
-        type: Sequelize.INTEGER,
+      fecha_registro:{
+        type: Sequelize.DATE,
         allowNull: false,
       },
-      ubicacion:{
+      estado:{
         type: Sequelize.STRING,
         allowNull: false
       }
@@ -40,6 +40,6 @@ module.exports = (sequelize, Sequelize) => {
 	  timestamps: false
 	});
   
-	return libros;
+	return usuarios;
   };
   

@@ -9,6 +9,7 @@ db.sequelize.sync({ force: true }).then(() => {
 }); 
 
 let router = require('./app/routers/routers.js');
+let routers2 = require('./app/routers/routers2.js');
 
 const cors = require('cors');
 const corsOptions = {
@@ -19,6 +20,7 @@ app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 app.use('/', router);
+app.use('/', routers2)
 app.get("/", (req, res) => {
   res.json({ message: "Bienvenido Estudiantes de UMG" });
 });

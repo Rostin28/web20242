@@ -1,8 +1,8 @@
 const env = {
-    database: 'umg_salma_5461',
+    database: 'parcial2_qtav',
     username: 'rostin28',
-    password: 'P2W6pTBgfnmAITgtXn3hxsKekLEccMGw',
-    host: 'dpg-cqin568gph6c738s68s0-a',
+    password: 'CvcMxnpvlF184Kbn9yIQ12kO8sQzUUVs',
+    host: 'dpg-crn5lrm8ii6s73el4ukg-a.oregon-postgres.render.com',
     dialect: 'postgres',
     pool: {
       max: 5,

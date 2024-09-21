@@ -25,5 +25,6 @@ db.sequelize = sequelize;
 
 // Importar el modelo de Rolas y pasar la instancia de sequelize y Sequelize
 db.libros = require('../models/libros.js')(sequelize, Sequelize);
+db.usuarios = require('../models/usuarios.js')(sequelize, Sequelize);
 
 module.exports = db;

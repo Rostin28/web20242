@@ -3,15 +3,15 @@ const libros = db.libros;
 
 exports.create = async (req, res) => {
   try {
-    const { Codigo_Libro, Nombre_libro, Editorial, Autor, Genero, Pais, No_Pag, Anio, Precio } = req.body;
+    const { id_libro, titulo, id_autor, isbn, editorial, anio_publicacion, categoria, cantidad_disponible, ubicacion } = req.body;
 
-    if (!Codigo_Libro || !Nombre_libro || !Editorial || !Autor || !Genero || !Pais || !No_Pag || !Anio || !Precio) {
+    if (!id_libro || !titulo || !id_autor || !isbn || !editorial || !anio_publicacion || !categoria || !cantidad_disponible || !ubicacion) {
       return res.status(400).json({
         message: "Missing required fields",
       });
     }
 
-    const newLibro = { Codigo_Libro, Nombre_libro, Editorial, Autor, Genero, Pais, No_Pag, Anio, Precio };
+    const newLibro = { id_libro, titulo, id_autor, isbn, editorial, anio_publicacion, categoria, cantidad_disponible, ubicacion };
     const result = await libros.create(newLibro);
 
     res.status(201).json({
@@ -42,19 +42,19 @@ exports.getAllLibros = async (req, res) => {
   }
 };
 
-exports.getLibroByNombre = async (req, res) => {
+exports.getLibroByID = async (req, res) => {
   try {
     const { Nombre_libro } = req.params;
-    const libro = await libros.findOne({ where: { Nombre_libro } });
+    const libro = await libros.findOne({ where: { id_libro } });
 
     if (!libro) {
       return res.status(404).json({
-        message: `No hay libro con el nombre = ${Nombre_libro}`,
+        message: `No hay libro con el nombre = ${id_libro}`,
       });
     }
 
     res.status(200).json({
-      message: "Libro encontrado = " + Nombre_libro,
+      message: "Libro encontrado = " + titulo,
       libro: libro
     });
   } catch (error) {
@@ -69,7 +69,7 @@ exports.getLibroByNombre = async (req, res) => {
 exports.updateById = async (req, res) => {
   try {
     const { id } = req.params;
-    const { Codigo_Libro, Nombre_libro, Editorial, Autor, Genero, Pais, No_Pag, Anio, Precio } = req.body;
+    const { id_libro, titulo, id_autor, isbn, editorial, anio_publicacion, categoria, cantidad_disponible, ubicacion } = req.body;
 
     const libro = await libros.findByPk(id);
 
@@ -80,7 +80,7 @@ exports.updateById = async (req, res) => {
       });
     }
 
-    const updatedLibro = { Codigo_Libro, Nombre_libro, Editorial, Autor, Genero, Pais, No_Pag, Anio, Precio };
+    const updatedLibro = { id_libro, titulo, id_autor, isbn, editorial, anio_publicacion, categoria, cantidad_disponible, ubicacion };
     await libros.update(updatedLibro, { where: { id } });
 
     res.status(200).json({
